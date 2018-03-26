@@ -8,6 +8,12 @@ var ConorsTodoItemsView = Backbone.View.extend({
 			throw new Error("Oops! The Model is not specified, fool!");
 
 		this.model.on("add", this.onAddConorsTodoItem, this);
+		this.model.on("remove", this.onRemoveConorsTodoItem, this);
+	},
+
+/*  HANDLES REMOVING AN ITEM TO THE LIST  */
+	onRemoveConorsTodoItem: function(conorsTodoItem){
+		this.$("li#" + conorsTodoItem.id).remove();
 	},
 
 /*  HANDLES ADDING AN ITEM TO THE LIST  */

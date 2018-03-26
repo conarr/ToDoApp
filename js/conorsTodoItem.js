@@ -2,6 +2,9 @@ var ConorsTodoItem = Backbone.Model.extend({
 	defaults: {
 		isCompleted: false
 	},
+
+	url: "fakeUrl",
+
 /*  VALIDATES THE MODEL  */
 	validate: function(attrs){
 		if (!attrs.description)
