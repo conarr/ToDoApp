@@ -10,23 +10,38 @@ var ConorsTodoItemsView = Backbone.View.extend({
 		this.model.on("add", this.onAddConorsTodoItem, this);
 	},
 
+/*  HANDLES ADDING AN ITEM TO THE LIST  */
 	onAddConorsTodoItem: function(conorsTodoItem){
 		var view = new ConorsTodoItemView({ model: conorsTodoItem });
-		this.$el.append(view.render().$el)
+		this.$el.append(view.render().$el);
 	},
 
+/*  HANDLES CLICK EVENTS  */
 	events: {
-		"click #add": "onClickAdd"
+		"click #add": "onClickAdd",
+		"keypress #newTodoItem": "onKeyPress"
+	},
+
+	onKeyPress: function(e){
+		if (e.keyCode == 13)
+			this.onClickAdd();
 	},
 
 	onClickAdd: function(){
-		var conorsTodoItem = new ConorsTodoItem({ description: "New Todo Item"});
-		this.model.add(conorsTodoItem);
+		var $textBox = this.$("#newTodoItem");
+
+		if ($textBox.val()){
+			var conorsTodoItem = new ConorsTodoItem({ description: $textBox.val() });
+			this.model.add(conorsTodoItem);
+
+			$textBox.val("");
+		}
 	},
 
 	render: function(){
 		var self = this;
 
+		this.$el.append("<input type='text' autofocus id='newTodoItem'></input>");
 		this.$el.append("<button id='add'>Add</button>");
 
 		this.model.each(function(conorsTodoItem){

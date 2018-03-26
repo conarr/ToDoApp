@@ -1,0 +1,4 @@
+#conorsTodoItems li.completed
+	{
+	text-decoration: line-through;
+	}
