@@ -3,16 +3,17 @@ var ConorsTodoItem = Backbone.Model.extend({
 		isCompleted: false
 	},
 
-	url: "fakeUrl",
+/*  CALLS THE SOURCE API FOR TO DO ITEMS  */
+	urlRoot: "https://jsonplaceholder.typicode.com/todos",
 
 /*  VALIDATES THE MODEL  */
 	validate: function(attrs){
-		if (!attrs.description)
-			return "Oops! A description is required!";
+		if (!attrs.title)
+			return "Oops! A title is required!";
 	},
 
 /*  UPDATES THE STATE OF THE MODEL  */
 	toggle: function(){
-		this.set("isCompleted", !this.get("isCompleted"));
+		this.set("completed", !this.get("completed"));
 	}
 });

@@ -37,8 +37,8 @@ var ConorsTodoItemsView = Backbone.View.extend({
 		var $textBox = this.$("#newTodoItem");
 
 		if ($textBox.val()){
-			var conorsTodoItem = new ConorsTodoItem({ description: $textBox.val() });
-			this.model.add(conorsTodoItem);
+			var conorsTodoItem = new ConorsTodoItem({ title: $textBox.val() });
+			this.model.create(conorsTodoItem);
 
 			$textBox.val("");
 		}
